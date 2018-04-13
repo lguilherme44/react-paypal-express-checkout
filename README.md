@@ -71,7 +71,7 @@ export default class MyApp extends React.Component {
 		
 		// NB. You can also have many Paypal express checkout buttons on page, just pass in the correct amount and they will work!		  
         return (
-            <PaypalExpressBtn env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} />
+            <PaypalExpressBtn env={env} client={client} currency={currency} total={total} onError={onError} onSuccess={onSuccess} onCancel={onCancel} productId={'Product Id'} productDescription={'Product description'} />
         );
     }
 }
@@ -92,7 +92,7 @@ export default class MyApp extends React.Component {
 ## Sample Returned Data
 
 - `onSuccess` - the returned `payment` object will look like: 
-	+ `{paid: true, cancelled: false, payerID: "H8S4CU73PFRAG", paymentID: "PAY-47J75876PA321622TLESPATA", paymentToken: "EC-8FE085188N269774L", returnUrl: "https://www.sandbox.paypal.com/?paymentId=PAY-47J75876PA321622TLESPATA&token=EC-8FE085188N269774L&PayerID=H8S4CU73PFRAG"}`
+	+ `{paid: true, cancelled: false, payerID: "H8S4CU73PFRAG", productId: "Product Id", paymentID: "PAY-47J75876PA321622TLESPATA", paymentToken: "EC-8FE085188N269774L", returnUrl: "https://www.sandbox.paypal.com/?paymentId=PAY-47J75876PA321622TLESPATA&token=EC-8FE085188N269774L&PayerID=H8S4CU73PFRAG"}`
 - `onCancel` - the returned `data` object will look like: 
 	+ `{paymentToken: "EC-42A825696K839141X", cancelUrl: "https://www.sandbox.paypal.com?token=EC-42A825696K839141X"}`
 
