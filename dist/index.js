@@ -130,22 +130,39 @@
 
                 var payment = function payment() {
                     return paypal.rest.payment.create(_this2.props.env, _this2.props.client, {
-                        transactions: [{ amount: { total: _this2.props.total, currency: _this2.props.currency } }]
+                        transactions: [
+                            {
+                                amount: {
+                                    total: _this2.props.total,
+                                    currency: _this2.props.currency
+                                },
+                                description: _this2.props.productDescription,
+                                custom: _this2.props.productId,
+                                //invoice_number: "001",
+                                //soft_descriptor: "ECHI5786786",
+                                /*            payment_options: {
+                                               allowed_payment_method: "INSTANT_FUNDING_SOURCE"
+                                           }, */
+                            },
+
+                        ]
                     }, {
-                        input_fields: {
-                            // any values other than null, and the address is not returned after payment execution.
-                            no_shipping: _this2.props.shipping
-                        }
-                    });
+                            input_fields: {
+                                // any values other than null, and the address is not returned after payment execution.
+                                no_shipping: _this2.props.shipping
+                            }
+                        });
                 };
 
                 var onAuthorize = function onAuthorize(data, actions) {
                     return actions.payment.execute().then(function (payment_data) {
-                        // console.log(`payment_data: ${JSON.stringify(payment_data, null, 1)}`)
+                        /* console.log(`payment_data: ${JSON.stringify(payment_data, null, 1)}`) */
+                        console.log(payment_data)
                         var payment = Object.assign({}, _this2.props.payment);
                         payment.paid = true;
                         payment.cancelled = false;
                         payment.payerID = data.payerID;
+                        payment.productId = payment_data.transactions[0].custom;
                         payment.paymentID = data.paymentID;
                         payment.paymentToken = data.paymentToken;
                         payment.returnUrl = data.returnUrl;
@@ -184,6 +201,8 @@
 
     PaypalButton.propTypes = {
         currency: _propTypes2.default.string.isRequired,
+        productId: _propTypes2.default.string.isRequired,
+        productDescription: _propTypes2.default.string.isRequired,
         total: _propTypes2.default.number.isRequired,
         client: _propTypes2.default.object.isRequired,
         style: _propTypes2.default.object
