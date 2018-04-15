@@ -4,14 +4,14 @@
     "description": "React component that renders Paypal's express check out button",
     "repository": {
         "type": "git",
-        "url": "https://github.com/thinhvo0108/react-paypal-express-checkout.git"
+        "url": "https://github.com/thebylito/react-paypal-express-checkout.git"
     },
     "author": "Thinh Vo <thinhvo0108@gmail.com>",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/thinhvo0108/react-paypal-express-checkout/issues"
+        "url": "https://github.com/thebylito/react-paypal-express-checkout/issues"
     },
-    "homepage": "https://github.com/thinhvo0108/react-paypal-express-checkout",
+    "homepage": "https://github.com/thebylito/react-paypal-express-checkout",
     "keywords": [
         "react-component",
         "react",
